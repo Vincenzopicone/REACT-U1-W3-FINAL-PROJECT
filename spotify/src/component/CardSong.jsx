@@ -1,12 +1,13 @@
-import { useEffect } from "react"
-import {useSelector, useDispatch} from "react-redux"
+import { useEffect, useState } from "react"
+/* import {useSelector, useDispatch} from "react-redux" */
 
 const CardSong = (props) => {
     
  /*    const artist = props.name */
-    const song = useSelector(state => state.app.song)
+ /*    const song = useSelector(state => state.app.song) */
 /*     const card = useSelector(state => state.app.section) */
-    const dispatch = useDispatch()
+/*     const dispatch = useDispatch() */
+     const [song, setSong]= useState();
   
     const getFetchSong = async () => {
       try {
@@ -14,7 +15,12 @@ const CardSong = (props) => {
         if (response.ok) {
         const data = await response.json()
         console.log(data.data[0])
-        dispatch({type: "GET_SONG_ROCK", payload: data.data[0]}) 
+/* 
+        dispatch({type: "GET_SONG", payload: data.data[0]})  */
+       setSong (data.data[0])
+        /* dispatch({type: "GET_SONG", payload: data.data[0]})  */
+        console.log(song)
+        
 
         } else {
         
@@ -34,13 +40,13 @@ const CardSong = (props) => {
 
     return (
       
-        <div class="col text-center">
-        {song.map ((e) => (
+        <div className="col text-center">
+          {song && (
             <>
-          <img src={e.artist.picture_medium} alt="" /> 
-          <p>{e.album.title}</p> 
-          <p>{e.artist.name}</p>
-          </> ))}
+            <img key={song.id} src={song.artist.picture_medium} alt="" /> 
+            <p>{song.album.title}</p> 
+            <p>{song.artist.name}</p>
+            </> ) }      
           </div>
        
     )

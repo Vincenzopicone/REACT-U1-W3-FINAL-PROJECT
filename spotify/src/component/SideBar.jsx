@@ -39,7 +39,7 @@ const SideBar = () => {
                       <Link className="nav-item nav-link" href="alt"><BsFillBookFill></BsFillBookFill>&nbsp; Your Library</Link>
                     </li>
                     <li>
-                      <div class="input-group mt-3">
+                      <div className="input-group mt-3">
                         <input
                           type="text"
                           className="form-control mb-2"
@@ -49,11 +49,11 @@ const SideBar = () => {
                           aria-describedby="basic-addon2"
                         />
                         <div
-                          class="input-group-append"
+                          className="input-group-append"
                           
                         >
                           <button
-                            class="btn btn-outline-secondary btn-sm"
+                            className="btn btn-outline-secondary btn-sm"
                             type="button"
                             id="button-addon1"
                           >
