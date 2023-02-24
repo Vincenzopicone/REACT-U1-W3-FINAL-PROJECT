@@ -40,7 +40,7 @@ const CardSong = (props) => {
 
     return (
       
-        <div className="col text-center">
+        <div className="col text-center imgLinks">
           {song && (
             <>
             <img key={song.id} src={song.artist.picture_medium} alt="" /> 

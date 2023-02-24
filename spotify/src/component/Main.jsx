@@ -1,6 +1,6 @@
-import { useEffect } from "react"
+
 import TopBar from "./ToBar"
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import CardSong from "./CardSong"
 
 const Main = () => {
