@@ -16,8 +16,8 @@ function App() {
         <Row>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/artist" element={<ArtistPage />} />
-            <Route path="/album" element={<AlbumPage />} />
+            <Route path="/artist/:id" element={<ArtistPage />} />
+            <Route path="/album/:id" element={<AlbumPage />} />
           </Routes>
         </Row>
         <BottomBar />

@@ -1,6 +1,7 @@
 const initialState = {
   song: [],
-  rock: ["nirvana", "acdc", "queen", "system of a down"],
+  artist: "muse",
+  rock: ["muse", "acdc", "queen", "system of a down"],
   pop: ["coldplay", "harry styles", "oasis", "abba"],
   hiphop: ["rihanna", "alicia keys", "bruno mars", "sia"],
 };
@@ -12,6 +13,8 @@ const appReducer = (state = initialState, action) => {
         ...state,
         song: [...state.song, action.payload],
       };
+    case "GET_NAME_ARTIST":
+      return { artist: action.paylod };
     /* case "GET_CARD":
       return {
         ...state,
