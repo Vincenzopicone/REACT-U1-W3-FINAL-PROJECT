@@ -16,7 +16,8 @@ const BottomBar = () => {
           <div className="col-lg-10 flex-column offset-lg-2">
             <div className="row flex-column justify-content-center p-3">
               <div className="playerControls mt-1 d-flex justify-content-between w-70">
-                <div className="text-light d-flex"> 
+                <div className="text-light d-flex">
+ 
                   <img className="me-1" style={{height: "4.5rem"}} src={play?.album?.cover} alt="cover"/>
                   <div className="d-flex flex-column p-1">
                   <p>{play?.artist?.name}</p>

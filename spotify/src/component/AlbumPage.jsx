@@ -1,11 +1,14 @@
 import TopBar from "./ToBar"
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AiOutlineHeart } from "react-icons/ai";
+
 
 const AlbumPage = () => {
   const [album, setAlbum]= useState();
   const [track, setTrack]=useState()
+  const like = useSelector((state)=>state.app.like)
   const params = useParams()
   const dispatch = useDispatch()  
   const getFetchSong = async () => {
@@ -22,6 +25,8 @@ const AlbumPage = () => {
       console.log("errore grave")
     }
   }
+
+  console.log(like)
   useEffect(()=>{
     getFetchSong()  
   }, [])
@@ -47,19 +52,12 @@ const AlbumPage = () => {
             <div className="row">
               <div className="col-md-10 mb-5" id="trackList">                
               {track && track.map((song)=> (
-          <div className="py-3 trackHover" key={song?.id} onClick={()=> dispatch({type: "PLAY_SONG", payload: song})}>
-          <Link href="#" className="card-title trackHover px-3" style={{color:"white"}} >{
-            song?.title
-          }</Link>
-          <small className="duration" style={{color:"white"}}>{Math.floor(
-            parseInt(song?.duration) / 60 
-          )}:{
-    parseInt(song?.duration) % 60 < 10
-      ? "0" + (parseInt(song?.duration) % 60)
-      : parseInt(song?.duration) % 60
-  }</small>
-      </div>           
-         ))}               
+               <div className="d-flex justify-content-between py-3 trackHover" key={song?.id} >
+                <Link href="#" className="card-title trackHover px-3 col-8" style={{color:"white"}} onClick={()=> dispatch({type: "PLAY_SONG", payload: song})} >{song?.title}</Link>
+                <p onClick={()=>  dispatch({type: "LIKE", payload: song.id}) } className="col-2" style={{color: like? "green" : "white"}}><AiOutlineHeart className="text-success"/></p>
+                <small onClick={()=> dispatch({type: "PLAY_SONG", payload: song})} className="duration col-2" style={{color:"white"}}>{Math.floor(parseInt(song?.duration) / 60 )}:{parseInt(song?.duration) % 60 < 10
+                ? "0" + (parseInt(song?.duration) % 60): parseInt(song?.duration) % 60 }</small>
+              </div>))}               
               </div>
             </div>
           </div>
