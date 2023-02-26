@@ -1,12 +1,14 @@
 import TopBar from "./ToBar"
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const AlbumPage = () => {
 
   const [album, setAlbum]= useState();
   const [track, setTrack]=useState()
   const params = useParams()
+  const dispatch = useDispatch()
 
 
   
@@ -45,9 +47,11 @@ const AlbumPage = () => {
     getFetchSong()  
   }, [])
 
+ 
+
     return (
         <>
-        <div className="col-12 col-md-9 offset-md-3 mainPage">
+        <div className="col-12 col-md-10 offset-md-2 mainPage">
             <TopBar/>
       
         </div>
@@ -71,7 +75,7 @@ const AlbumPage = () => {
 
                 
               {track && track.map((song)=> (
-          <div className="py-3 trackHover" key={song?.id}>
+          <div className="py-3 trackHover" key={song?.id} onClick={()=> dispatch({type: "PLAY_SONG", payload: song})}>
           <Link href="#" className="card-title trackHover px-3" style={{color:"white"}} >{
             song?.title
           }</Link>

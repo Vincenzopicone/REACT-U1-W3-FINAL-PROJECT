@@ -67,7 +67,7 @@ const ArtistPage = () => {
  
 
     return (
-        <div className="col-12 col-md-9 offset-md-3 mainPage">
+        <div className="col-12 col-md-10 offset-md-2 mainPage">
         <TopBar/>
 
         <div className="row">

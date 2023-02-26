@@ -8,13 +8,14 @@ const CardSong = (props) => {
  /*    const artist = props.name */
  /*    const song = useSelector(state => state.app.song) */
 /*     const card = useSelector(state => state.app.section) */
-    const dispatch = useDispatch()
+/*     const dispatch = useDispatch() */
      const [song, setSong]= useState();
-     const navigate = useNavigate()
-
-   /*   const handleClick = (e) => {
-      dispatch({type: "GET_NAME_ARTIST", payload: e.target })
-     } */
+/* 
+   const handleClick = () => {
+    console.log("click")
+    dispatch({type: "PLAY_SONG", payload: song})
+    
+     }  */
     const getFetchSong = async () => {
       try {
         const response = await fetch (`https://striveschool-api.herokuapp.com/api/deezer/search?q=${props.name}`)
@@ -47,7 +48,7 @@ const CardSong = (props) => {
 
     return (
       
-        <div className="col text-center imgLinks" /* onClick={navigate()}} */>
+        <div className="col text-center imgLinks" /* onClick={() => handleClick()} */>
           {song && (
             <>
             <Link><img key={song.id} src={song.artist.picture_medium} alt="Cover" /> </Link>
