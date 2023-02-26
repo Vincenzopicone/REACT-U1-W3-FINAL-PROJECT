@@ -4,56 +4,31 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
 const AlbumPage = () => {
-
   const [album, setAlbum]= useState();
   const [track, setTrack]=useState()
   const params = useParams()
-  const dispatch = useDispatch()
-
-
-  
+  const dispatch = useDispatch()  
   const getFetchSong = async () => {
     try {
-      const response = await fetch (`https://striveschool-api.herokuapp.com/api/deezer/album/${params.id}`/* , {
-        method: "GET",
-        "X-RapidAPI-Host": "deezerdevs-deezer.p.rapidapi.com",
-        "X-RapidAPI-Key":
-          "c74a0a086emshf55ffb8dbdcb59ap17a486jsnb83bb4d3e387"
-      } */)
-      
+      const response = await fetch (`https://striveschool-api.herokuapp.com/api/deezer/album/${params.id}`)      
       if (response.ok) {
       const data = await response.json()
-      /* 
-      dispatch({type: "GET_SONG", payload: data.data[0]})  */
       setAlbum (data)
       setTrack(data.tracks.data)
-      /* dispatch({type: "GET_SONG", payload: data.data[0]})  */
-      console.log(album)
-     
-      
-
       } else {
-      
-
+        console.log("errore nel fetch")   
       }
-
     } catch(err) {
-      console.log("errore nel ")
-
+      console.log("errore grave")
     }
   }
-
   useEffect(()=>{
     getFetchSong()  
   }, [])
-
- 
-
     return (
         <>
         <div className="col-12 col-md-10 offset-md-2 mainPage">
-            <TopBar/>
-      
+            <TopBar/>      
         </div>
         <div className="row d-flex justify-content-center">
           <div className=" pt-5 text-center" id="img-container" key={album?.id}>
@@ -70,10 +45,7 @@ const AlbumPage = () => {
           </div>
           <div className="col-md-8 p-5">
             <div className="row">
-              <div className="col-md-10 mb-5" id="trackList">
-
-
-                
+              <div className="col-md-10 mb-5" id="trackList">                
               {track && track.map((song)=> (
           <div className="py-3 trackHover" key={song?.id} onClick={()=> dispatch({type: "PLAY_SONG", payload: song})}>
           <Link href="#" className="card-title trackHover px-3" style={{color:"white"}} >{
@@ -86,10 +58,8 @@ const AlbumPage = () => {
       ? "0" + (parseInt(song?.duration) % 60)
       : parseInt(song?.duration) % 60
   }</small>
-      </div>
-           
-         ))} 
-              
+      </div>           
+         ))}               
               </div>
             </div>
           </div>

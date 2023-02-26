@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../assets/img/Spotify_Logo.png";
 import { FaHome } from "react-icons/fa";
 import { BsFillBookFill } from "react-icons/bs";
