@@ -53,7 +53,7 @@ const CardSong = (props) => {
             <Link><img key={song.id} src={song.artist.picture_medium} alt="Cover" /> </Link>
             <div className="p-2 fs-0">
             <Link className="text-decoration-none" to={`/album/${song.album.id}`}><p>Album: {song.album.title}</p> </Link>
-            <Link  className="text-decoration-none"  to={`/artist/${song.artist.id}`}><p>Artist: {song.artist.name}</p></Link>
+            <Link  className="text-decoration-none"  to={`/artist/${song.artist.name}`}><p>Artist: {song.artist.name}</p></Link>
             </div>
             </> ) }      
           </div>

@@ -1,7 +1,7 @@
 const initialState = {
   song: [],
   artist: "muse",
-  rock: ["muse", "acdc", "queen", "system of a down"],
+  rock: ["muse", "tony tammaro", "queen", "system of a down"],
   pop: ["coldplay", "harry styles", "oasis", "abba"],
   hiphop: ["rihanna", "alicia keys", "bruno mars", "sia"],
 };
